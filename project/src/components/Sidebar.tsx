@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Star, Eye, Calendar } from 'lucide-react';
@@ -7,6 +7,18 @@ import { getEditorsPicks, getMostReadArticles } from '../data/articles';
 const Sidebar: React.FC = () => {
   const editorsPicks = getEditorsPicks();
   const mostRead = getMostReadArticles();
+
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
+
+  const handleSubscribe = () => {
+    if (!email.trim()) {
+      setMessage({ text: 'Email is needed for subscription.', type: 'error' });
+    } else {
+      setMessage({ text: 'Subscription complete!', type: 'success' });
+      setEmail('');
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -20,14 +32,10 @@ const Sidebar: React.FC = () => {
           <Star className="h-6 w-6 text-yellow-500 mr-2" />
           <h3 className="text-xl font-bold text-gray-900">Editor's Picks</h3>
         </div>
-        
+
         <div className="space-y-4">
           {editorsPicks.map((article) => (
-            <Link
-              key={article.id}
-              to={`/article/${article.id}`}
-              className="block group"
-            >
+            <Link key={article.id} to={`/article/${article.id}`} className="block group">
               <div className="flex space-x-3">
                 <img
                   src={article.image}
@@ -60,14 +68,10 @@ const Sidebar: React.FC = () => {
           <Eye className="h-6 w-6 text-blue-500 mr-2" />
           <h3 className="text-xl font-bold text-gray-900">Most Read</h3>
         </div>
-        
+
         <div className="space-y-4">
           {mostRead.map((article, index) => (
-            <Link
-              key={article.id}
-              to={`/article/${article.id}`}
-              className="block group"
-            >
+            <Link key={article.id} to={`/article/${article.id}`} className="block group">
               <div className="flex items-start space-x-3">
                 <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-sm">{index + 1}</span>
@@ -95,17 +99,36 @@ const Sidebar: React.FC = () => {
         className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 text-white"
       >
         <h3 className="text-xl font-bold mb-4">Stay Updated</h3>
-        <p className="text-blue-100 mb-6">Get the latest tech news delivered to your inbox.</p>
-        
+        <p className="text-blue-100 mb-6">
+          Get the latest tech news delivered to your inbox.
+        </p>
+
         <div className="space-y-3">
           <input
             type="email"
             placeholder="Your email address"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setMessage(null);
+            }}
             className="w-full px-4 py-3 rounded-lg text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
-          <button className="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+          <button
+            onClick={handleSubscribe}
+            className="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+          >
             Subscribe
           </button>
+          {message && (
+            <p
+              className={`text-sm font-medium ${
+                message.type === 'success' ? 'text-green-200' : 'text-red-200'
+              }`}
+            >
+              {message.text}
+            </p>
+          )}
         </div>
       </motion.div>
     </div>

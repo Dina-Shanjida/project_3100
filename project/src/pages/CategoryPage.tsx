@@ -8,7 +8,8 @@ import Sidebar from '../components/Sidebar';
 
 const CategoryPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-  const categoryArticles = getArticlesByCategory(category?.charAt(0).toUpperCase() + category?.slice(1) || '');
+  const categoryArticles = getArticlesByCategory(category || '');
+
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -24,7 +25,7 @@ const CategoryPage: React.FC = () => {
             Category
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4 capitalize">
-            {category} News
+            {category?.toUpperCase()} News
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Discover the latest developments and insights in {category}

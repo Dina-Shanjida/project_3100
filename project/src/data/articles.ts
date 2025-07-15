@@ -249,8 +249,9 @@ export const categories = [
 ];
 
 export const getArticlesByCategory = (category: string) => {
-  return articles.filter(article => article.category === category);
+  return articles.filter(article => article.category.toLowerCase() === category.toLowerCase());
 };
+
 
 export const getTrendingArticles = () => {
   return articles.filter(article => article.isTrending).slice(0, 4);

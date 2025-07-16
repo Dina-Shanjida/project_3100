@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Star, Eye, Calendar } from 'lucide-react';
@@ -8,20 +8,9 @@ const Sidebar: React.FC = () => {
   const editorsPicks = getEditorsPicks();
   const mostRead = getMostReadArticles();
 
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
-
-  const handleSubscribe = () => {
-    if (!email.trim()) {
-      setMessage({ text: 'Email is needed for subscription.', type: 'error' });
-    } else {
-      setMessage({ text: 'Subscription complete!', type: 'success' });
-      setEmail('');
-    }
-  };
-
   return (
-    <div className="space-y-8">
+    // Add padding-top to avoid overlap with fixed header bar
+    <div className="space-y-8 pt-16"> 
       {/* Editor's Picks */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -88,47 +77,6 @@ const Sidebar: React.FC = () => {
               </div>
             </Link>
           ))}
-        </div>
-      </motion.div>
-
-      {/* Newsletter Signup */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 text-white"
-      >
-        <h3 className="text-xl font-bold mb-4">Stay Updated</h3>
-        <p className="text-blue-100 mb-6">
-          Get the latest tech news delivered to your inbox.
-        </p>
-
-        <div className="space-y-3">
-          <input
-            type="email"
-            placeholder="Your email address"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setMessage(null);
-            }}
-            className="w-full px-4 py-3 rounded-lg text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          />
-          <button
-            onClick={handleSubscribe}
-            className="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-          >
-            Subscribe
-          </button>
-          {message && (
-            <p
-              className={`text-sm font-medium ${
-                message.type === 'success' ? 'text-green-200' : 'text-red-200'
-              }`}
-            >
-              {message.text}
-            </p>
-          )}
         </div>
       </motion.div>
     </div>

@@ -1,7 +1,14 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, Eye, User, ArrowLeft, Share2, Bookmark } from 'lucide-react';
+import {
+  Calendar,
+  Clock,
+  Eye,
+  ArrowLeft,
+  Share2,
+  Bookmark,
+} from 'lucide-react';
 import { getArticleById, getMostReadArticles } from '../data/articles';
 import Sidebar from '../components/Sidebar';
 
@@ -14,8 +21,12 @@ const ArticlePage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Article Not Found</h1>
-          <p className="text-gray-600 mb-8">The article you're looking for doesn't exist.</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Article Not Found
+          </h1>
+          <p className="text-gray-600 mb-8">
+            The article you're looking for doesn't exist.
+          </p>
           <Link
             to="/"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
@@ -29,7 +40,7 @@ const ArticlePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Navigation */}
+      {/* Sticky Nav */}
       <div className="bg-white shadow-sm sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link
@@ -51,36 +62,42 @@ const ArticlePage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-xl shadow-lg overflow-hidden"
             >
-              {/* Article Header */}
-              <div className="relative h-64 md:h-96">
+              {/* Header Image with Offset */}
+              <div className="relative h-64 md:h-96 mt-16">
                 <img
                   src={article.image}
                   alt={article.title}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                
+
                 {/* Category Badge */}
                 <div className="absolute top-6 left-6">
-                  <span className={`px-3 py-1 text-sm font-semibold rounded-full ${
-                    article.category === 'AI' ? 'bg-blue-100 text-blue-800' :
-                    article.category === 'Gadgets' ? 'bg-green-100 text-green-800' :
-                    article.category === 'Programming' ? 'bg-purple-100 text-purple-800' :
-                    article.category === 'Cybersecurity' ? 'bg-red-100 text-red-800' :
-                    'bg-gray-100 text-gray-800'
-                  }`}>
+                  <span
+                    className={`px-3 py-1 text-sm font-semibold rounded-full ${
+                      article.category === 'AI'
+                        ? 'bg-blue-100 text-blue-800'
+                        : article.category === 'Gadgets'
+                        ? 'bg-green-100 text-green-800'
+                        : article.category === 'Programming'
+                        ? 'bg-purple-100 text-purple-800'
+                        : article.category === 'Cybersecurity'
+                        ? 'bg-red-100 text-red-800'
+                        : 'bg-gray-100 text-gray-800'
+                    }`}
+                  >
                     {article.category}
                   </span>
                 </div>
               </div>
 
-              {/* Article Content */}
+              {/* Content Section */}
               <div className="p-8">
                 <h1 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
                   {article.title}
                 </h1>
 
-                {/* Article Meta */}
+                {/* Meta Info */}
                 <div className="flex flex-wrap items-center gap-6 mb-8 text-gray-600">
                   <div className="flex items-center">
                     <img
@@ -96,11 +113,13 @@ const ArticlePage: React.FC = () => {
 
                   <div className="flex items-center">
                     <Calendar className="h-5 w-5 mr-2" />
-                    <span>{new Date(article.publishedDate).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}</span>
+                    <span>
+                      {new Date(article.publishedDate).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </span>
                   </div>
 
                   <div className="flex items-center">
@@ -114,7 +133,7 @@ const ArticlePage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Article Actions */}
+                {/* Actions */}
                 <div className="flex items-center gap-4 mb-8 pb-8 border-b border-gray-200">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -124,7 +143,7 @@ const ArticlePage: React.FC = () => {
                     <Share2 className="h-4 w-4 mr-2" />
                     Share
                   </motion.button>
-                  
+
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -135,12 +154,12 @@ const ArticlePage: React.FC = () => {
                   </motion.button>
                 </div>
 
-                {/* Article Body */}
+                {/* Summary + Body */}
                 <div className="prose prose-lg max-w-none">
                   <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                     {article.summary}
                   </p>
-                  
+
                   <div className="text-gray-800 leading-relaxed">
                     {article.content.split('\n\n').map((paragraph, index) => (
                       <p key={index} className="mb-6">
@@ -174,7 +193,9 @@ const ArticlePage: React.FC = () => {
               transition={{ delay: 0.2 }}
               className="mt-12"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">You Might Also Like</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">
+                You Might Also Like
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {relatedArticles.map((relatedArticle) => (
                   <Link

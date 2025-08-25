@@ -15,6 +15,7 @@ export interface Article {
   isTrending?: boolean;
 }
 
+
 export const articles: Article[] = [
   // AI
   {
@@ -252,7 +253,6 @@ export const getArticlesByCategory = (category: string) => {
   return articles.filter(article => article.category.toLowerCase() === category.toLowerCase());
 };
 
-
 export const getTrendingArticles = () => {
   return articles.filter(article => article.isTrending).slice(0, 4);
 };
@@ -267,4 +267,16 @@ export const getMostReadArticles = () => {
 
 export const getArticleById = (id: string) => {
   return articles.find(article => article.id === id);
+};
+
+// ✅ New: Generate shareable link for an article
+export const getArticleShareLink = (id: string) => {
+  if (typeof window !== "undefined") {
+    return `${window.location.origin}/article/${id}`;
+  }
+  return `/article/${id}`;
+};
+
+export const getAllArticles = () => {
+  return articles;
 };

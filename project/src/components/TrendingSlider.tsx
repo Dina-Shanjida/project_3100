@@ -24,25 +24,27 @@ const TrendingSlider: React.FC = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-r from-orange-50 to-red-50">
+    <section className="py-16 bg-gradient-to-r from-orange-50 dark:from-gray-900 to-red-50 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium mb-4"
+            className="inline-flex items-center px-4 py-2 bg-orange-100 dark:bg-orange-600 text-orange-800 dark:text-white rounded-full text-sm font-medium mb-4"
           >
             <TrendingUp className="h-4 w-4 mr-2" />
             Trending Now
           </motion.div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             What's Hot in Tech
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Stay updated with the most popular stories that are shaping the tech world today
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Stay updated with the most popular stories shaping the tech world today
           </p>
         </div>
 
+        {/* Slider */}
         <div className="relative">
           <div className="overflow-hidden rounded-2xl shadow-xl">
             <AnimatePresence mode="wait">
@@ -61,12 +63,12 @@ const TrendingSlider: React.FC = () => {
                 />
                 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent dark:from-black/80 dark:via-black/50 dark:to-transparent"></div>
                 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                   <div className="max-w-4xl">
-                    <span className="inline-block bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                    <span className="inline-block bg-orange-500 dark:bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4">
                       {trendingArticles[currentSlide].category}
                     </span>
                     
@@ -74,7 +76,7 @@ const TrendingSlider: React.FC = () => {
                       {trendingArticles[currentSlide].title}
                     </h3>
                     
-                    <p className="text-gray-200 mb-6 text-lg max-w-2xl">
+                    <p className="text-gray-200 dark:text-gray-300 mb-6 text-lg max-w-2xl">
                       {trendingArticles[currentSlide].summary}
                     </p>
                     
@@ -87,13 +89,15 @@ const TrendingSlider: React.FC = () => {
                         />
                         <div>
                           <div className="font-semibold">{trendingArticles[currentSlide].author}</div>
-                          <div className="text-gray-300 text-sm">{trendingArticles[currentSlide].readTime}</div>
+                          <div className="text-gray-300 dark:text-gray-400 text-sm">
+                            {trendingArticles[currentSlide].readTime}
+                          </div>
                         </div>
                       </div>
                       
                       <Link
                         to={`/article/${trendingArticles[currentSlide].id}`}
-                        className="bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                        className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                       >
                         Read More
                       </Link>
@@ -107,14 +111,14 @@ const TrendingSlider: React.FC = () => {
           {/* Navigation buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-900 p-3 rounded-full shadow-lg transition-all duration-200"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 hover:bg-white dark:hover:bg-gray-600 text-gray-900 dark:text-white p-3 rounded-full shadow-lg transition-all duration-200"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-900 p-3 rounded-full shadow-lg transition-all duration-200"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 hover:bg-white dark:hover:bg-gray-600 text-gray-900 dark:text-white p-3 rounded-full shadow-lg transition-all duration-200"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
@@ -126,7 +130,9 @@ const TrendingSlider: React.FC = () => {
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                  index === currentSlide ? 'bg-orange-500' : 'bg-gray-300'
+                  index === currentSlide
+                    ? 'bg-orange-500 dark:bg-blue-500'
+                    : 'bg-gray-300 dark:bg-gray-500'
                 }`}
               />
             ))}

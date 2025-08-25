@@ -10,9 +10,8 @@ const CategoryPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
   const categoryArticles = getArticlesByCategory(category || '');
 
-
   return (
-    <div className="min-h-screen bg-gray-50 pt-16">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Category Header */}
         <motion.div
@@ -20,14 +19,14 @@ const CategoryPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-4">
+          <div className="inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium mb-4">
             <Tag className="h-4 w-4 mr-2" />
             Category
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 capitalize">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 capitalize">
             {category?.toUpperCase()} News
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Discover the latest developments and insights in {category}
           </p>
         </motion.div>
@@ -42,14 +41,12 @@ const CategoryPage: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12">
-                <div className="text-gray-400 mb-4">
+              <div className="text-center py-12 text-gray-900 dark:text-gray-100">
+                <div className="text-gray-400 dark:text-gray-500 mb-4">
                   <Tag className="h-16 w-16 mx-auto" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  No articles found
-                </h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-semibold mb-2">No articles found</h3>
+                <p className="text-gray-600 dark:text-gray-400">
                   We don't have any articles in this category yet. Check back later!
                 </p>
               </div>

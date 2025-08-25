@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1755606485077,
+    "name": "dina ",
+    "email": "dinasanjida0210@gmail.com",
+    "subject": "bug",
+    "message": "i found a bug in your contact section \n",
+    "reply": "You can reach us via this form, or at support@technova.example. We typically reply within 24 hours.",
+    "createdAt": "2025-08-19T12:28:05.077Z",
+    "ip": "::1"
+  },
+  {
+    "id": 1755606542387,
+    "name": "dina ",
+    "email": "dinasanjida0210@gmail.com",
+    "subject": "job",
+    "message": "i am looking for any info about the jobs you are offering now \n",
+    "reply": "We’re not hiring right now, but you can send your portfolio via this form and we’ll keep it on file.",
+    "createdAt": "2025-08-19T12:29:02.387Z",
+    "ip": "::1"
+  },
+  {
+    "id": 1755897730953,
+    "name": "Dina Shanjida",
+    "email": "dinasanjida0210@gmail.com",
+    "subject": "AI",
+    "message": "erty",
+    "reply": "Thanks for your message! We’ve received it and will follow up soon. Meanwhile, check our About page for more info.",
+    "createdAt": "2025-08-22T21:22:10.953Z",
+    "ip": "::1"
+  }
+]

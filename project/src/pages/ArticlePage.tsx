@@ -1,14 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import {
-  Calendar,
-  Clock,
-  Eye,
-  ArrowLeft,
-  Share2,
-  Bookmark,
-} from 'lucide-react';
+import { Calendar, Clock, Eye, ArrowLeft, Share2, Bookmark } from 'lucide-react';
 import { getArticleById, getMostReadArticles } from '../data/articles';
 import Sidebar from '../components/Sidebar';
 
@@ -19,11 +12,9 @@ const ArticlePage: React.FC = () => {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Article Not Found
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Article Not Found</h1>
           <p className="text-gray-600 mb-8">
             The article you're looking for doesn't exist.
           </p>
@@ -40,8 +31,8 @@ const ArticlePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Sticky Nav */}
-      <div className="bg-white shadow-sm sticky top-16 z-40">
+      {/* Sticky Back Navigation */}
+      <div className="sticky top-16 bg-white shadow-sm z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link
             to="/"
@@ -62,7 +53,7 @@ const ArticlePage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-xl shadow-lg overflow-hidden"
             >
-              {/* Header Image with Offset */}
+              {/* Header Image */}
               <div className="relative h-64 md:h-96 mt-16">
                 <img
                   src={article.image}
@@ -91,7 +82,7 @@ const ArticlePage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Content Section */}
+              {/* Article Content */}
               <div className="p-8">
                 <h1 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
                   {article.title}
@@ -133,7 +124,7 @@ const ArticlePage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Actions */}
+                {/* Share & Save Buttons */}
                 <div className="flex items-center gap-4 mb-8 pb-8 border-b border-gray-200">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -156,10 +147,7 @@ const ArticlePage: React.FC = () => {
 
                 {/* Summary + Body */}
                 <div className="prose prose-lg max-w-none">
-                  <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                    {article.summary}
-                  </p>
-
+                  <p className="text-xl text-gray-600 mb-8 leading-relaxed">{article.summary}</p>
                   <div className="text-gray-800 leading-relaxed">
                     {article.content.split('\n\n').map((paragraph, index) => (
                       <p key={index} className="mb-6">
@@ -193,9 +181,7 @@ const ArticlePage: React.FC = () => {
               transition={{ delay: 0.2 }}
               className="mt-12"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">
-                You Might Also Like
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">You Might Also Like</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {relatedArticles.map((relatedArticle) => (
                   <Link
@@ -212,9 +198,7 @@ const ArticlePage: React.FC = () => {
                       <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">
                         {relatedArticle.title}
                       </h3>
-                      <p className="text-gray-600 text-sm line-clamp-2">
-                        {relatedArticle.summary}
-                      </p>
+                      <p className="text-gray-600 text-sm line-clamp-2">{relatedArticle.summary}</p>
                     </div>
                   </Link>
                 ))}

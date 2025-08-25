@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden dark:bg-gray-900">
       {/* Background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800"></div>
       
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-2000"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse dark:bg-blue-700"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000 dark:bg-purple-700"></div>
+        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-2000 dark:bg-indigo-700"></div>
       </div>
 
       {/* Content */}
@@ -27,8 +27,8 @@ const Hero: React.FC = () => {
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white mb-6"
+            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+            className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white mb-6 dark:bg-white/20"
           >
             <TrendingUp className="h-5 w-5 mr-2" />
             <span className="text-sm font-medium">Latest in Tech Innovation</span>
@@ -36,21 +36,18 @@ const Hero: React.FC = () => {
 
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
             <span className="block">Welcome to</span>
-            <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent dark:from-blue-300 dark:to-purple-300">
               TechNova
             </span>
           </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+
+          <p className="text-xl md:text-2xl text-gray-300 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
             Your ultimate destination for cutting-edge technology news, insights, and innovations 
             that shape our digital future.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link 
                 to="/category/ai"
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
@@ -60,13 +57,10 @@ const Hero: React.FC = () => {
               </Link>
             </motion.div>
 
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link 
                 to="/about"
-                className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-200"
+                className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-200 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700"
               >
                 Learn More
                 <Zap className="ml-2 h-5 w-5" />
@@ -84,15 +78,15 @@ const Hero: React.FC = () => {
         >
           <div className="text-center">
             <div className="text-3xl font-bold text-white mb-2">50K+</div>
-            <div className="text-gray-300">Daily Readers</div>
+            <div className="text-gray-300 dark:text-gray-400">Daily Readers</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-white mb-2">1000+</div>
-            <div className="text-gray-300">Tech Articles</div>
+            <div className="text-gray-300 dark:text-gray-400">Tech Articles</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-white mb-2">24/7</div>
-            <div className="text-gray-300">Latest Updates</div>
+            <div className="text-gray-300 dark:text-gray-400">Latest Updates</div>
           </div>
         </motion.div>
       </div>

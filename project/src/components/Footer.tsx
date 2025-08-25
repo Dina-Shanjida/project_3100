@@ -6,7 +6,7 @@ import { categories } from '../data/articles';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-white dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}
@@ -18,72 +18,69 @@ const Footer: React.FC = () => {
               >
                 <Zap className="h-6 w-6 text-white" />
               </motion.div>
-              <span className="text-2xl font-bold">TechNova</span>
+              <span className="text-2xl font-bold text-white dark:text-gray-100">TechNova</span>
             </Link>
-            
-            <p className="text-gray-300 mb-6 max-w-md">
+
+            <p className="text-gray-300 dark:text-gray-300 mb-6 max-w-md">
               TechNova is your trusted source for the latest technology news, insights, and innovations. 
               We bring you comprehensive coverage of the tech world's most important developments.
             </p>
-            
+
             <div className="flex space-x-4">
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="#"
-                className="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors"
-              >
-                <Facebook className="h-5 w-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="#"
-                className="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors"
-              >
-                <Twitter className="h-5 w-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="#"
-                className="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors"
-              >
-                <Instagram className="h-5 w-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="#"
-                className="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors"
-              >
-                <Youtube className="h-5 w-5" />
-              </motion.a>
+              {[Facebook, Twitter, Instagram, Youtube].map((Icon, idx) => (
+                <motion.a
+                  key={idx}
+                  whileHover={{ scale: 1.1 }}
+                  href="#"
+                  className="bg-gray-800 dark:bg-gray-700 p-3 rounded-full hover:bg-blue-600 dark:hover:bg-blue-500 transition-colors"
+                >
+                  <Icon className="h-5 w-5 text-white" />
+                </motion.a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-6 text-white dark:text-gray-100">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-white transition-colors">
+                <Link
+                  to="/"
+                  className="text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
+                <Link
+                  to="/about"
+                  className="text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
+                <Link
+                  to="/contact"
+                  className="text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors"
+                >
                   Contact
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors"
+                >
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors"
+                >
                   Terms of Service
                 </a>
               </li>
@@ -92,13 +89,13 @@ const Footer: React.FC = () => {
 
           {/* Categories */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Categories</h3>
+            <h3 className="text-lg font-semibold mb-6 text-white dark:text-gray-100">Categories</h3>
             <ul className="space-y-3">
               {categories.slice(0, 6).map((category) => (
                 <li key={category}>
                   <Link
                     to={`/category/${category.toLowerCase()}`}
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors"
                   >
                     {category}
                   </Link>
@@ -109,25 +106,25 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Contact Info */}
-        <div className="border-t border-gray-800 pt-8 mt-12">
+        <div className="border-t border-gray-800 dark:border-gray-700 pt-8 mt-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex items-center">
               <Mail className="h-5 w-5 text-blue-400 mr-3" />
-              <span className="text-gray-300">contact@technova.com</span>
+              <span className="text-gray-300 dark:text-gray-300">contact@technova.com</span>
             </div>
             <div className="flex items-center">
               <Phone className="h-5 w-5 text-blue-400 mr-3" />
-              <span className="text-gray-300">+1 (555) 123-4567</span>
+              <span className="text-gray-300 dark:text-gray-300">+1 (555) 123-4567</span>
             </div>
             <div className="flex items-center">
               <MapPin className="h-5 w-5 text-blue-400 mr-3" />
-              <span className="text-gray-300">San Francisco, CA</span>
+              <span className="text-gray-300 dark:text-gray-300">San Francisco, CA</span>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
+        <div className="border-t border-gray-800 dark:border-gray-700 pt-8 mt-8 text-center text-gray-400 dark:text-gray-300">
           <p>&copy; 2024 TechNova. All rights reserved. Built with passion for technology.</p>
         </div>
       </div>

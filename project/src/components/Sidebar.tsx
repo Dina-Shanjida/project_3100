@@ -9,17 +9,17 @@ const Sidebar: React.FC = () => {
   const mostRead = getMostReadArticles();
 
   return (
-    // Add padding-top to avoid overlap with fixed header bar
+    // Add padding-top to avoid overlap with fixed header
     <div className="space-y-8 pt-16"> 
       {/* Editor's Picks */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-xl shadow-lg p-6"
+        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
       >
         <div className="flex items-center mb-6">
           <Star className="h-6 w-6 text-yellow-500 mr-2" />
-          <h3 className="text-xl font-bold text-gray-900">Editor's Picks</h3>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Editor's Picks</h3>
         </div>
 
         <div className="space-y-4">
@@ -32,10 +32,10 @@ const Sidebar: React.FC = () => {
                   className="w-16 h-16 rounded-lg object-cover group-hover:scale-105 transition-transform duration-200"
                 />
                 <div className="flex-1">
-                  <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 text-sm">
+                  <h4 className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 text-sm">
                     {article.title}
                   </h4>
-                  <div className="flex items-center text-xs text-gray-500 mt-1">
+                  <div className="flex items-center text-xs text-gray-500 dark:text-gray-400 mt-1">
                     <Calendar className="h-3 w-3 mr-1" />
                     {new Date(article.publishedDate).toLocaleDateString()}
                   </div>
@@ -51,11 +51,11 @@ const Sidebar: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-white rounded-xl shadow-lg p-6"
+        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
       >
         <div className="flex items-center mb-6">
           <Eye className="h-6 w-6 text-blue-500 mr-2" />
-          <h3 className="text-xl font-bold text-gray-900">Most Read</h3>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Most Read</h3>
         </div>
 
         <div className="space-y-4">
@@ -66,10 +66,10 @@ const Sidebar: React.FC = () => {
                   <span className="text-white font-bold text-sm">{index + 1}</span>
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 text-sm">
+                  <h4 className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 text-sm">
                     {article.title}
                   </h4>
-                  <div className="flex items-center text-xs text-gray-500 mt-1">
+                  <div className="flex items-center text-xs text-gray-500 dark:text-gray-400 mt-1">
                     <Eye className="h-3 w-3 mr-1" />
                     {article.views.toLocaleString()} views
                   </div>

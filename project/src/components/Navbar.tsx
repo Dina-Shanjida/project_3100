@@ -119,6 +119,8 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
             <Link to="/about" className={`font-medium transition-colors ${baseText}`}>About</Link>
             <Link to="/contact" className={`font-medium transition-colors ${baseText}`}>Contact</Link>
             <Link to="/saved" className={`font-medium transition-colors ${baseText}`}>Saved</Link>
+            {/* QNA Link */}
+            <Link to="/qna" className={`font-medium transition-colors ${baseText}`}>QNA</Link>
 
             {/* Search */}
             <div className="relative" ref={searchRef}>
@@ -241,6 +243,14 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
               onClick={() => setIsOpen(false)}
             >
               Saved
+            </Link>
+            {/* QNA Link */}
+            <Link
+              to="/qna"
+              className="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              QNA
             </Link>
           </motion.div>
         )}
